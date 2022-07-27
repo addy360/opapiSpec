@@ -15,22 +15,22 @@ import java.util.Optional;
 public class IdeaService {
     private final IdeaRepo ideaRepo;
 
-    List<Idea> findAll() {
+    public List<Idea> findAll() {
         return ideaRepo.findAll();
     }
 
-    Optional<Idea> findById(long id) {
+    public Optional<Idea> findById(long id) {
         return ideaRepo.findById(id);
     }
 
-    Idea create(IdeaDto ideaDto) {
+    public Idea create(IdeaDto ideaDto) {
         Idea idea = new Idea();
         idea.setTitle(ideaDto.getTitle());
         idea.setDescription(ideaDto.getDescription());
         return ideaRepo.save(idea);
     }
 
-    Idea update(IdeaDto ideaDto, long id) {
+    public Idea update(IdeaDto ideaDto, long id) {
         Optional<Idea> byId = findById(id);
         if (!byId.isPresent()) return null;
 
@@ -40,7 +40,7 @@ public class IdeaService {
         return ideaRepo.save(idea);
     }
 
-    void delete(long id) {
+    public void delete(long id) {
         Idea idea = findById(id).orElse(null);
         if (idea == null) return;
         ideaRepo.delete(idea);
