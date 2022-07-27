@@ -4,6 +4,9 @@ import com.addy360.openApiSpec.dtos.ApiResponse;
 import com.addy360.openApiSpec.dtos.IdeaDto;
 import com.addy360.openApiSpec.models.Idea;
 import com.addy360.openApiSpec.service.IdeaService;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Contact;
+import io.swagger.v3.oas.annotations.info.Info;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +23,16 @@ import java.util.stream.Collectors;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/ideas")
+@OpenAPIDefinition(
+        info = @Info(
+                title = "Field of ideas",
+                description = "Let the world know what is in that head of yours",
+                contact = @Contact(
+                        name = "Addy360",
+                        email = "info@addy360.co.tz"
+                )
+        )
+)
 public class IdeaController {
     private final IdeaService ideaService;
 
